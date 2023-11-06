@@ -111,7 +111,7 @@ venv*
 
 # mkdocs documentation
 /site
-
+img/
 # mypy
 .mypy_cache/
 .dmypy.json

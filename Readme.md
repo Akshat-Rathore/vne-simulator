@@ -15,7 +15,7 @@ Before running the simulator, ensure you have the following installed:
 Clone the repository using git:
 
 ```bash
-git clone https://github.com/yourusername/vne-simulator.git
+git clone https://github.com/Akshat-Rathore/vne-simulator.gitgit 
 cd vne-simulator
 ```
 Install the required dependecies:
