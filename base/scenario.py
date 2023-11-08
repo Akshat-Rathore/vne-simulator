@@ -26,7 +26,7 @@ class BasicScenario(Scenario):
             instance = self.env.reset()
             pbar = None
             if self.verbose <= 1:
-                pbar = tqdm.tqdm(desc=f'Running with {self.solver.name} in epoch {epoch_id}', total=self.env.num_vns)
+                pbar = tqdm.tqdm(desc=f'Running with {self.solver.name}', total=self.env.num_vns)
             
             while True:
                 solve_start_time = time.time()

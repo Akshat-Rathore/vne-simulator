@@ -5,7 +5,6 @@ __pycache__/
 
 # Custom ignore directories
 solve/
-dataset/
 
 # Ignore all .png files
 *.png
