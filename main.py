@@ -36,8 +36,8 @@ def main():
             break
     
     # Generate datasets if required
-    is_gen_pn = config.generate_pn
-    is_gen_vn = config.generate_vn
+    is_gen_pn = 1
+    is_gen_vn = 1
     pn, vn_simulator = Generator.generate_dataset(
         config,
         pn=is_gen_pn,
