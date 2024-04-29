@@ -28,6 +28,7 @@ def setup_parser():
     # Data Arguments
     parser.add_argument('--pn_setting_path', type=str, default='settings/pn_setting/pn_setting.yaml', help='Physical network settings file path')
     parser.add_argument('--vns_setting_path', type=str, default='settings/vns_setting/vns_setting.yaml', help='Virtual network settings file path')
+    # parser.add_argument('--vns_setting_path', type=str, default='settings/vns_setting/vns_setting.yaml', help='Virtual network settings file path')
     parser.add_argument('--config_path', type=str, default="", help='Read config from file')
     parser.add_argument('--setting_dir', type=str, default='settings/', help='Settings directory')
     parser.add_argument('--nodeRank', type=str, default="", help='')
@@ -75,7 +76,7 @@ def get_config(args=None, adjust_pn_setting={}, adjust_vns_setting={}):
     # Dataset directories
     config.pn_dataset_dir = get_pn_dataset_dir_from_setting(config.pn_setting)
     config.vns_dataset_dir = get_vns_dataset_dir_from_setting(config.vns_setting)
-
+    
     # Attributes count
     config.num_pn_node_attrs = len(config.pn_setting['node_attrs_setting'])
     config.num_pn_edge_attrs = len(config.pn_setting['edge_attrs_setting'])

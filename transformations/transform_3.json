@@ -1,0 +1,26 @@
+{
+    "nodes": [
+        {
+            "id": 3,
+            "type": "create_virtual_node",
+            "from_physical_node": "h1",
+            "cpu_allocation": 7,
+            "label": "v3"
+        },
+        {
+            "id": 4,
+            "type": "create_virtual_node",
+            "from_physical_node": "h9",
+            "cpu_allocation": 7,
+            "label": "v4"
+        }
+    ],
+    "edges": [
+        {
+            "type": "create_virtual_link",
+            "source": "3",
+            "target": "4",
+            "bandwidth": 9
+        }
+    ]
+}

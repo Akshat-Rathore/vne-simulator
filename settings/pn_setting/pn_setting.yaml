@@ -1,4 +1,4 @@
-num_nodes: 100
+num_nodes: 10
 save_dir: dataset/pn
 topology:
   type: waxman

@@ -2,7 +2,7 @@ from collections import deque
 import copy
 from itertools import islice
 import math
-
+import os
 import numpy as np
 import networkx as nx
 
@@ -180,8 +180,6 @@ class Controller:
     @classmethod
     def bfs_deploy(cls, vn, pn, sorted_v_nodes, pn_initial_node, max_visit=100, max_depth=10, shortest_method='all_shortest', k=10):
         r"""Deploy the `vn` in `pn` starting from `initial_node` using Breadth-First Search solverrithm.
-
-        method: ['first_shortest', 'k_shortest', 'all_shortest', 'bfs_shortest', 'available_shortest']
         """
         solution = Solution(vn)
         max_visit_in_every_depth = math.ceil(np.power(max_visit, 1 / max_depth)) # max_visit_in_every_depth = max_visit
@@ -193,6 +191,29 @@ class Controller:
 
         num_placed_nodes = 0
         v_node_id = sorted_v_nodes[num_placed_nodes]
+        import logging
+        import datetime
+        import hashlib
+        import random
+        dir_name = f"transformations/logs"
+        if not os.path.exists(dir_name):
+            os.makedirs(dir_name)
+            # print(f"Directory {dir_name} created")
+
+        # Determine unique filename for logging
+        index = 0
+        while os.path.exists(f"{dir_name}/transform_{index}.log"):
+            index += 1
+        log_filename = f"{dir_name}/transform_{index}.log"
+        logger = logging.getLogger(f'transform_logger_{index}')
+        logger.setLevel(logging.INFO)
+        file_handler = logging.FileHandler(log_filename)
+        formatter = logging.Formatter('%(asctime)s:%(levelname)s:%(message)s')
+        file_handler.setFormatter(formatter)
+        logger.addHandler(file_handler)
+
+            # Configure logging
+        # logging.basicConfig(filename='place.log', level=logging.INFO, format='%(asctime)s:%(levelname)s:%(message)s')
 
         while queue:
             (curr_pid, depth) = queue.pop(0)
@@ -201,10 +222,14 @@ class Controller:
 
             if cls.place_and_route(vn, pn, v_node_id, curr_pid, solution, shortest_method=shortest_method, k=k):
                 # print(f"place {v_node_id} to {curr_pid}, solution: {solution['node_slots']}")
+                logger.info(f"place {v_node_id} to {curr_pid}, solution: {solution['node_slots']}")
+
                 num_placed_nodes = num_placed_nodes + 1
 
                 if num_placed_nodes >= len(sorted_v_nodes):
                     solution['result'] = True
+                    logger.removeHandler(file_handler)
+                    file_handler.close()
                     return solution
                 v_node_id = sorted_v_nodes[num_placed_nodes]
             else:
@@ -223,6 +248,8 @@ class Controller:
                 if not visited[dst]:
                     queue.append((dst, depth + 1))
                     visited[dst] = True
+        logger.removeHandler(file_handler)
+        file_handler.close()
         return solution
 
 

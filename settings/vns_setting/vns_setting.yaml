@@ -1,12 +1,12 @@
-num_vns: 200
+num_vns: 10
 topology:
   random_prob: 0.5
   type: random
 vn_size:
   distribution: uniform
   dtype: int
-  low: 2
-  high: 10
+  low: 5
+  high: 6
 arrival_rate:
   distribution: possion
   dtype: float
@@ -21,8 +21,8 @@ node_attrs_setting:
     distribution: uniform
     dtype: int
     generative: true
-    low: 0
-    high: 50
+    low: 7
+    high: 8
     owner: node
     type: resource
 edge_attrs_setting:
@@ -30,8 +30,8 @@ edge_attrs_setting:
     distribution: uniform
     dtype: int
     generative: true
-    low: 0
-    high: 50
+    low: 9
+    high: 10
     owner: edge
     type: resource
 save_dir: dataset/vns

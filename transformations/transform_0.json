@@ -1,0 +1,78 @@
+{
+    "nodes": [
+        {
+            "id": 0,
+            "type": "create_virtual_node",
+            "from_physical_node": "h2",
+            "cpu_allocation": 7,
+            "label": "v0"
+        },
+        {
+            "id": 1,
+            "type": "create_virtual_node",
+            "from_physical_node": "h8",
+            "cpu_allocation": 7,
+            "label": "v1"
+        },
+        {
+            "id": 2,
+            "type": "create_virtual_node",
+            "from_physical_node": "h4",
+            "cpu_allocation": 8,
+            "label": "v2"
+        },
+        {
+            "id": 3,
+            "type": "create_virtual_node",
+            "from_physical_node": "h3",
+            "cpu_allocation": 7,
+            "label": "v3"
+        },
+        {
+            "id": 4,
+            "type": "create_virtual_node",
+            "from_physical_node": "h1",
+            "cpu_allocation": 7,
+            "label": "v4"
+        },
+        {
+            "id": 5,
+            "type": "create_virtual_node",
+            "from_physical_node": "h9",
+            "cpu_allocation": 7,
+            "label": "v5"
+        }
+    ],
+    "edges": [
+        {
+            "type": "create_virtual_link",
+            "source": "0",
+            "target": "1",
+            "bandwidth": 9
+        },
+        {
+            "type": "create_virtual_link",
+            "source": "1",
+            "target": "4",
+            "bandwidth": 9
+        },
+        {
+            "type": "create_virtual_link",
+            "source": "2",
+            "target": "5",
+            "bandwidth": 10
+        },
+        {
+            "type": "create_virtual_link",
+            "source": "3",
+            "target": "5",
+            "bandwidth": 9
+        },
+        {
+            "type": "create_virtual_link",
+            "source": "4",
+            "target": "5",
+            "bandwidth": 10
+        }
+    ]
+}

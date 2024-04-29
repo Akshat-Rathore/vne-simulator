@@ -2,7 +2,7 @@ import os
 import time
 import tqdm
 import pprint
-
+import logging
 class Scenario:
     def __init__(self, env, solver, config):
         self.env = env
@@ -19,6 +19,7 @@ class BasicScenario(Scenario):
         pass
 
     def run(self, num_epochs=1, start_epoch=0):
+        logging.basicConfig(filename='instances.log', level=logging.INFO, format='%(asctime)s:%(levelname)s:%(message)s')
         for epoch_id in range(start_epoch, start_epoch + num_epochs):  
             total_start = time.time()
             if self.verbose >= 2:
@@ -33,6 +34,7 @@ class BasicScenario(Scenario):
                 solution = self.solver.solve(instance)
                 self.solve_time += time.time() - solve_start_time
                 next_instance, _, done, info = self.env.step(solution)
+                # logging.info(f"{}")
 
                 if pbar:
                     pbar.update(1)
